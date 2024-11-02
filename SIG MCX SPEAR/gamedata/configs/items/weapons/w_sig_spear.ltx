@@ -494,10 +494,8 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_t12_h
         aim_hud_offset_rot_16x9          = 0.012567, -0.006591, -0.05	
 		
 ;================================================================SCOPES=======================================	
-		
 [wpn_sig_spear_acog]:wpn_sig_spear
-
-
+hud					              = wpn_sig_spear_acog_hud
 
 1icon_layer             = acog
 1icon_layer_x			= 89
@@ -509,8 +507,6 @@ scope_zoom_factor                 = 42.86
 
 use_alt_aim_hud                   = true
 
-hud					              = wpn_sig_spear_acog_hud
-
 [wpn_sig_spear_acog_hud]:wpn_sig_spear_hud
 
 item_visual				= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_acog_hud.ogf
@@ -521,9 +517,6 @@ item_visual				= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_acog_hud.ogf
         aim_hud_offset_rot_16x9          = 0.025351, -0.010275, -0.047
 ;-------------------------------------------------------------------------------
 [wpn_sig_spear_specter]:wpn_sig_spear
-
-
-
 hud					= wpn_sig_spear_specter_hud
 
 1icon_layer                              = specter
@@ -536,7 +529,7 @@ scope_zoom_factor                                  = 30
 scope_dynamic_zoom                                 = on
 
 use_alt_aim_hud                   = true
-
+zoom_step_count = 1
 [wpn_sig_spear_specter_hud]:wpn_sig_spear_hud
 
 item_visual				= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_specter_hud.ogf
@@ -552,7 +545,7 @@ item_visual				= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_specter_hud.ogf
         aim_hud_offset_rot_16x9          = 0.019551, -0.010776, -0.047
 ;--------------------------------------------------------------------------------	
 [wpn_sig_spear_spec_alt]:wpn_sig_spear
-
+zoom_step_count = 1
 hud					= wpn_sig_spear_spec_alt_hud
 
 inv_grid_x         = 10
@@ -628,7 +621,7 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_eot2m
 
 1icon_layer                              = tac30
 1icon_layer_x                            = 76
-1icon_layer_y                            = -14
+1icon_layer_y                            = -8
 
 inv_weight                               = 4.150
 
@@ -647,11 +640,11 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_tac30
         aim_hud_offset_rot_16x9          = 0.019227, -0.009879, -0.05
 ;-------------------------------------------------------------------------------
 [wpn_sig_spear_ps320]:wpn_sig_spear
-
+zoom_step_count = 1
 
 1icon_layer                              = ps320
 1icon_layer_x                            = 67
-1icon_layer_y                            = -17
+1icon_layer_y                            = -12
 
 inv_weight                               = 4.220
 
