@@ -1,11 +1,11 @@
-[wpn_sig_spear]:identity_immunities,weapon_probability,default_weapon_params,wpn_sig_spear_sounds
+[wpn_sig_spear_tan]:identity_immunities,weapon_probability,default_weapon_params,wpn_sig_spear_sounds
 GroupControlSection                      = spawn_group
 $npc                                     = on
 $prefetch                                = 8
 $spawn                                   = "weapons\sig550"
 scheduled                                = off
 cform                                    = skeleton
-parent_section                           = wpn_sig_spear
+parent_section                           = wpn_sig_spear_tan
 
 class                                    = WP_AK74
 slot                                     = 2
@@ -21,7 +21,7 @@ sprint_allowed                           = true
 inv_grid_width     = 5
 inv_grid_height    = 2
 inv_grid_x         = 0
-inv_grid_y         = 2
+inv_grid_y         = 0
 
 icons_texture                                       = ui\ui_icon_sig_spear_new
 
@@ -35,8 +35,8 @@ cost                                     = 167430
 repair_type                              = rifle_7
 weapon_class                             = assault_rifle
 
-hud                                      = wpn_sig_spear_hud
-visual                                   = dynamics\weapons\wpn_sig_spear\wpn_sig_spear_world.ogf
+hud                                      = wpn_sig_spear_tan_hud
+visual                                   = dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_world.ogf
         fire_point                       = 0.044875, -0.05377, 0.553094
 		fire_point2                              = 0, 0.161, 0.583
         orientation                      = 0, -7.482231, 0.219592
@@ -50,8 +50,10 @@ strap_bone1                              = bip01_spine1
 ph_mass                                  = 4
 
 flame_particles                          = weapons\generic_weapon05
-smoke_particles                          = weapons\generic_shoot_00
+;smoke_particles                          = weapons\generic_shoot_00
 grenade_flame_particles                  = weapons\generic_weapon01
+
+smoke_particles				             = ghost_particles\weapons\flame_eft_ak  
 
 shell_point             				 = 0.030000, 0.150000, 0.080000
 shell_dir               				 = 0,0,0.4
@@ -91,11 +93,13 @@ silencer_light_range                     = 0.01
 silencer_light_time                      = 0.2
 silencer_light_var_color                 = 0.05
 silencer_light_var_range                 = 0.5
-silencer_smoke_particles                 = weapons\generic_shoot_00
+;silencer_smoke_particles                 = weapons\generic_shoot_00
+
+silencer_smoke_particles   		         = ghost_particles\weapons\generic_smoke_eft_sil
 
 grenade_class                            = ammo_m209, ammo_m209_bad, ammo_m209_verybad
 grenade_launcher_name                    = wpn_addon_grenade_launcher_scar
-grenade_launcher_status                  = 2
+grenade_launcher_status                  = 0
 grenade_launcher_x                       = 84
 grenade_launcher_y                       = 37
 grenade_vel                              = 76
@@ -106,7 +110,7 @@ hit_power                                = 0.75, 0.75, 0.75, 0.75
 hit_type                                 = fire_wound
 fire_distance                            = 1000
 bullet_speed                             = 802
-rpm                                      = 650
+rpm                                      = 600
 rpm_empty_click                          = 200
 
 use_aim_bullet                           = false
@@ -177,11 +181,9 @@ lewd_lens_hide_enabled       = true
 lewd_lens_hide_bone          = lens
 lewd_lens_hide_delays        = 0.1,0
 lewd_lens_hide_aim_mode      = true, false, false	
-
 ;------------------------------------------------------------------------HUD----------------------------------------------------------------------------
-[wpn_sig_spear_hud]:hud_base
-
-item_visual                              = dynamics\weapons\wpn_sig_spear\wpn_sig_spear_hud.ogf
+[wpn_sig_spear_tan_hud]:hud_base
+item_visual                              = dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_hud.ogf
 
 attach_place_idx                         = 0
 zoom_hide_crosshair                      = true   
@@ -239,62 +241,8 @@ anm_show_empty                           = spear_hand_in, spear_idle_empty
 anm_reload_misfire                       = spear_hand_misfire, spear_misfire
 anm_bore                                 = spear_hand_boring, idle
 anm_bore_empty                           = spear_hand_boring, spear_idle_empty
-anm_ammo_check                           = spear_hand_magcheck, spear_magcheck
-anm_ammo_check_empty                     = spear_hand_magcheck, spear_magcheck_empty
 
-;Grenade Laucher attached OFF
-;---------------------------------------
-
-anm_hide_w_gl                            = scar_hand_out_w_gl, idle_w_gl
-anm_idle_moving_crouch_w_gl_aim          = scar_hand_crouch_w_gl, idle_w_gl
-anm_idle_moving_crouch_w_gl              = scar_hand_crouch_w_gl, idle_w_gl
-anm_idle_moving_w_gl                     = scar_hand_walk_w_gl, idle_w_gl
-anm_idle_moving_w_gl_aim                 = scar_hand_walk_w_gl, idle_w_gl
-anm_idle_sprint_w_gl                     = scar_hand_run_w_gl, idle_w_gl, 1.1
-anm_idle_w_gl                            = scar_hand_idle_w_gl, idle_w_gl
-anm_idle_w_gl_aim                        = scar_hand_idle_w_gl_aim, idle_w_gl
-anm_reload_w_gl                          = scar_hand_reload_w_gl, spear_reload_w_gl
-anm_reload_empty_w_gl                    = scar_hand_reload_w_gl_empty, spear_reload_empty_w_gl
-anm_shots_w_gl                           = scar_hand_shoot_w_gl, spear_shoot_w_gl
-anm_show_w_gl                            = scar_hand_in_w_gl, idle_w_gl
-anm_switch_g                             = scar_hand_gl_on, idle_w_gl
-anm_reload_misfire_w_gl                  = scar_hand_misfire_w_gl, spear_misfire_w_gl
-anm_bore_w_gl				 			 = scar_hand_boring_w_gl, idle_w_gl
-
-
-;EMPTY
-
-anm_idle_empty_w_gl                      = scar_hand_idle_w_gl, spear_idle_empty_w_gl
-anm_hide_empty_w_gl                      = scar_hand_out_w_gl, spear_idle_empty_w_gl
-anm_idle_moving_crouch_empty_w_gl_aim    = scar_hand_crouch_w_gl, spear_idle_empty_w_gl
-anm_idle_moving_crouch_empty_w_gl        = scar_hand_crouch_w_gl, spear_idle_empty_w_gl
-anm_idle_moving_empty_w_gl               = scar_hand_walk_w_gl, spear_idle_empty_w_gl
-anm_idle_moving_empty_w_gl_aim           = scar_hand_walk_w_gl, spear_idle_empty_w_gl
-anm_idle_sprint_empty_w_gl               = scar_hand_run_w_gl, spear_idle_empty_w_gl, 1.1
-anm_idle_empty_w_gl_aim                  = scar_hand_idle_w_gl_aim, spear_idle_empty_w_gl
-anm_shots_empty_w_gl                     = scar_hand_shoot_w_gl, spear_shoot_empty_w_gl
-anm_show_empty_w_gl                      = scar_hand_in_w_gl, idle_empty_w_gl
-anm_bore_empty_w_gl		         		 = scar_hand_boring_w_gl, spear_idle_empty_w_gl
-anm_bore_w_gl				 			 = scar_hand_boring_w_gl, spear_idle_empty_w_gl
-
-
-;Grenade Laucher attached ON
-;---------------------------------------
-
-anm_hide_g                               = scar_hand_out_gl, idle
-anm_idle_g                               = scar_hand_idle_gl, idle
-anm_idle_g_aim                           = scar_hand_idle_gl_aim, idle
-anm_idle_moving_g                        = scar_hand_walk_gl, idle
-anm_idle_moving_g_aim                    = scar_hand_walk_gl, idle
-anm_idle_sprint_g                        = scar_hand_run_gl, idle, 1.1
-anm_reload_g                             = scar_hand_reload_gl, spear_reload_gl
-anm_shots_g                              = scar_hand_shoot_gl, idle
-anm_show_g                               = scar_hand_in_gl, idle
-anm_switch                               = scar_hand_gl_off, idle
-
-
-
-shell_bone                               = wpn_body
+shell_bone                               = gliza
 shell_dir                                = 0, 0, 0
 shell_point                              = 0.004, 0, 0.141
 
@@ -311,9 +259,10 @@ lewd_lens_hide_enabled       = true
 lewd_lens_hide_bone          = lens
 lewd_lens_hide_delays        = 0.1,0
 lewd_lens_hide_aim_mode      = true, false, false	
+
 ;================================================================SIGHTS===========================================================	
-[wpn_sig_spear_ac10632]:wpn_sig_spear
-hud				= wpn_sig_spear_ac10632_hud
+[wpn_sig_spear_tan_ac10632]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_ac10632_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -326,16 +275,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.115
 
-[wpn_sig_spear_ac10632_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_ac10632_hud.ogf
+[wpn_sig_spear_tan_ac10632_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_ac10632_hud.ogf
         aim_hud_offset_pos               = -0.05346, -0.008474, -0.03
         aim_hud_offset_pos_16x9          = -0.05346, -0.008474, -0.03
         aim_hud_offset_rot               = -0.001987, 0.003088, -0.05
         aim_hud_offset_rot_16x9          = -0.001987, 0.003088, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_c-more]:wpn_sig_spear
-hud				= wpn_sig_spear_c-more_hud
+[wpn_sig_spear_tan_c-more]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_c-more_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -348,16 +297,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_c-more_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_c-more_hud.ogf
+[wpn_sig_spear_tan_c-more_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_c-more_hud.ogf
         aim_hud_offset_pos               = -0.053603, -0.007273, -0.03
         aim_hud_offset_pos_16x9          = -0.053603, -0.007273, -0.03
         aim_hud_offset_rot               = -0.000952, 0.003415, -0.05
         aim_hud_offset_rot_16x9          = -0.000952, 0.003415, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_compm4s]:wpn_sig_spear
-hud				= wpn_sig_spear_compm4s_hud
+[wpn_sig_spear_tan_compm4s]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_compm4s_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -370,16 +319,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_compm4s_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_compm4s_hud.ogf
+[wpn_sig_spear_tan_compm4s_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_compm4s_hud.ogf
         aim_hud_offset_pos               = -0.053328, -0.008082, -0.03
         aim_hud_offset_pos_16x9          = -0.053328, -0.008082, -0.03
         aim_hud_offset_rot               = -0.001664, 0.003164, -0.05
         aim_hud_offset_rot_16x9          = -0.001664, 0.003164, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_e0t2]:wpn_sig_spear
-hud				= wpn_sig_spear_e0t2_hud
+[wpn_sig_spear_tan_e0t2]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_e0t2_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -392,16 +341,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.23
 
-[wpn_sig_spear_e0t2_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_e0t2_hud.ogf
+[wpn_sig_spear_tan_e0t2_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_e0t2_hud.ogf
         aim_hud_offset_pos               = -0.05346, -0.00938, -0.03
         aim_hud_offset_pos_16x9          = -0.05346, -0.00938, -0.03
         aim_hud_offset_rot               = -0.0025, 0.003337, -0.05
         aim_hud_offset_rot_16x9          = -0.0025, 0.003337, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_ekp8_18]:wpn_sig_spear
-hud				= wpn_sig_spear_ekp8_18_hud
+[wpn_sig_spear_tan_ekp8_18]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_ekp8_18_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -414,16 +363,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_ekp8_18_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_ekp8_18_hud.ogf
+[wpn_sig_spear_tan_ekp8_18_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_ekp8_18_hud.ogf
         aim_hud_offset_pos               = -0.053543, -0.017799, -0.03
         aim_hud_offset_pos_16x9          = -0.053543, -0.017799, -0.03
         aim_hud_offset_rot               = -0.013741, 0.002302, -0.05
         aim_hud_offset_rot_16x9          = -0.013741, 0.002302, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_eot]:wpn_sig_spear
-hud				= wpn_sig_spear_eot_hud
+[wpn_sig_spear_tan_eot]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_eot_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -436,16 +385,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.23
 
-[wpn_sig_spear_eot_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_eot_hud.ogf
+[wpn_sig_spear_tan_eot_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_eot_hud.ogf
         aim_hud_offset_pos               = -0.053342, -0.014992, -0.03
         aim_hud_offset_pos_16x9          = -0.053342, -0.014992, -0.03
         aim_hud_offset_rot               = -0.001169, 0.00337, -0.05
         aim_hud_offset_rot_16x9          = -0.001169, 0.00337, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_hco]:wpn_sig_spear
-hud				= wpn_sig_spear_hco_hud
+[wpn_sig_spear_tan_hco]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_hco_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -458,16 +407,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_hco_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_hco_hud.ogf
+[wpn_sig_spear_tan_hco_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_hco_hud.ogf
         aim_hud_offset_pos               = -0.053515, -0.0146, -0.03
         aim_hud_offset_pos_16x9          = -0.053515, -0.0146, -0.03
         aim_hud_offset_rot               = -0.001343, 0.003031, -0.05
         aim_hud_offset_rot_16x9          = -0.001343, 0.003031, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_he510]:wpn_sig_spear
-hud				= wpn_sig_spear_he510_hud
+[wpn_sig_spear_tan_he510]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_he510_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -480,16 +429,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_he510_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_he510_hud.ogf
+[wpn_sig_spear_tan_he510_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_he510_hud.ogf
         aim_hud_offset_pos               = -0.053553, -0.011268, -0.03
         aim_hud_offset_pos_16x9          = -0.053553, -0.011268, -0.03
         aim_hud_offset_rot               = -0.001612, 0.003544, -0.05
         aim_hud_offset_rot_16x9          = -0.001612, 0.003544, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_kemper]:wpn_sig_spear
-hud				= wpn_sig_spear_kemper_hud
+[wpn_sig_spear_tan_kemper]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_kemper_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -502,16 +451,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_kemper_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_kemper_hud.ogf
+[wpn_sig_spear_tan_kemper_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_kemper_hud.ogf
         aim_hud_offset_pos               = -0.053585, -0.011506, -0.03
         aim_hud_offset_pos_16x9          = -0.053585, -0.011506, -0.03
         aim_hud_offset_rot               = -0.001432, 0.003414, -0.05
         aim_hud_offset_rot_16x9          = -0.001432, 0.003414, -0.05
 		ive got
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_p1x42]:wpn_sig_spear
-hud				= wpn_sig_spear_p1x42_hud
+[wpn_sig_spear_tan_p1x42]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_p1x42_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -524,16 +473,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.115
 
-[wpn_sig_spear_p1x42_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_p1x42_hud.ogf
+[wpn_sig_spear_tan_p1x42_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_p1x42_hud.ogf
         aim_hud_offset_pos               = -0.053511, -0.008138, -0.03
         aim_hud_offset_pos_16x9          = -0.053511, -0.008138, -0.03
         aim_hud_offset_rot               = 0.000189, 0.003445, -0.05
         aim_hud_offset_rot_16x9          = 0.000189, 0.003445, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_point_aimpro]:wpn_sig_spear
-hud				= wpn_sig_spear_point_aimpro_hud
+[wpn_sig_spear_tan_point_aimpro]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_point_aimpro_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -546,15 +495,15 @@ inv_grid_y         = 2
 
 inv_weight              = 4.2
 
-[wpn_sig_spear_point_aimpro_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_aimpoint_pro_hud.ogf
+[wpn_sig_spear_tan_point_aimpro_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_aimpoint_pro_hud.ogf
         aim_hud_offset_pos               = -0.053332, -0.009202, -0.03
         aim_hud_offset_pos_16x9          = -0.053332, -0.009202, -0.03
         aim_hud_offset_rot               = -0.001539, 0.003114, -0.05
         aim_hud_offset_rot_16x9          = -0.001539, 0.003114, -0.05
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_rmr]:wpn_sig_spear
-hud				= wpn_sig_spear_rmr_hud
+[wpn_sig_spear_tan_rmr]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_rmr_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -567,16 +516,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.115
 
-[wpn_sig_spear_rmr_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_rmr_hud.ogf
+[wpn_sig_spear_tan_rmr_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_rmr_hud.ogf
         aim_hud_offset_pos               = -0.053642, -0.009164, -0.03
         aim_hud_offset_pos_16x9          = -0.053642, -0.009164, -0.03
         aim_hud_offset_rot               = -0.003432, 0.003288, -0.05
         aim_hud_offset_rot_16x9          = -0.003432, 0.003288, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_romeo4]:wpn_sig_spear
-hud				= wpn_sig_spear_romeo4_hud
+[wpn_sig_spear_tan_romeo4]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_romeo4_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -589,16 +538,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.115
 
-[wpn_sig_spear_romeo4_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_romeo4_hud.ogf
+[wpn_sig_spear_tan_romeo4_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_romeo4_hud.ogf
         aim_hud_offset_pos               = -0.05363, -0.010312, -0.03
         aim_hud_offset_pos_16x9          = -0.05363, -0.010312, -0.03
         aim_hud_offset_rot               = -0.001668, 0.003234, -0.05
         aim_hud_offset_rot_16x9          = -0.001668, 0.003234, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_t12]:wpn_sig_spear
-hud				= wpn_sig_spear_t12_hud
+[wpn_sig_spear_tan_t12]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_t12_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -611,16 +560,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.115
 
-[wpn_sig_spear_t12_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_t12_hud.ogf
+[wpn_sig_spear_tan_t12_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_t12_hud.ogf
         aim_hud_offset_pos               = -0.053577, 0.001713, -0.03
         aim_hud_offset_pos_16x9          = -0.053577, 0.001713, -0.03
         aim_hud_offset_rot               = -0.000288, 0.003174, -0.05
         aim_hud_offset_rot_16x9          = -0.000288, 0.003174, -0.05
 		
 ;-------------------------------------------------------------------------------
-[wpn_sig_spear_uh2]:wpn_sig_spear
-hud				= wpn_sig_spear_uh2_hud
+[wpn_sig_spear_tan_uh2]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_uh2_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -633,16 +582,16 @@ inv_grid_y         = 2
 
 inv_weight              = 4.23
 
-[wpn_sig_spear_uh2_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_uh1_hud.ogf
+[wpn_sig_spear_tan_uh2_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_uh1_hud.ogf
         aim_hud_offset_pos               = -0.053678, -0.012913, -0.03
         aim_hud_offset_pos_16x9          = -0.053678, -0.012913, -0.03
         aim_hud_offset_rot               = -0.002529, 0.003597, -0.05
         aim_hud_offset_rot_16x9          = -0.002529, 0.003597, -0.05
 
 ;================================================================SCOPES===========================================================			
-[wpn_sig_spear_acog]:wpn_sig_spear
-hud				= wpn_sig_spear_acog_hud
+[wpn_sig_spear_tan_acog]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_acog_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -658,16 +607,16 @@ scope_zoom_factor       = 42.86
 
 inv_weight              = 4.45
 
-[wpn_sig_spear_acog_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_acog_hud.ogf
+[wpn_sig_spear_tan_acog_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_acog_hud.ogf
         aim_hud_offset_pos               = -0.053637, -0.009313, -0.097877
         aim_hud_offset_pos_16x9          = -0.053637, -0.009313, -0.097877
         aim_hud_offset_rot               = 0.004856, 0.003629, -0.05
         aim_hud_offset_rot_16x9          = 0.004856, 0.003629, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_triji]:wpn_sig_spear
-hud				= wpn_sig_spear_triji_hud
+[wpn_sig_spear_tan_triji]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_triji_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -683,8 +632,8 @@ scope_zoom_factor       = 42.86
 
 inv_weight              = 4.50
 
-[wpn_sig_spear_triji_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_triji_hud.ogf
+[wpn_sig_spear_tan_triji_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_triji_hud.ogf
         aim_hud_offset_pos               = -0.053637, -0.009313, -0.097877
         aim_hud_offset_pos_16x9          = -0.053637, -0.009313, -0.097877
         aim_hud_offset_rot               = 0.004856, 0.003629, -0.05
@@ -696,8 +645,8 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_triji
         aim_hud_offset_alt_rot_16x9      = -0.002078, 0.003566, 0.74
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_c79]:wpn_sig_spear
-hud				= wpn_sig_spear_c79_hud
+[wpn_sig_spear_tan_c79]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_c79_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -713,16 +662,16 @@ scope_zoom_factor       = 34.3
 
 inv_weight              = 4.45
 
-[wpn_sig_spear_c79_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_c79_hud.ogf
+[wpn_sig_spear_tan_c79_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_c79_hud.ogf
         aim_hud_offset_pos               = -0.053419, -0.011759, -0.102469
         aim_hud_offset_pos_16x9          = -0.053419, -0.011759, -0.102469
         aim_hud_offset_rot               = -0.002965, 0.00335, -0.05
         aim_hud_offset_rot_16x9          = -0.002965, 0.00335, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_cortex]:wpn_sig_spear
-hud				= wpn_sig_spear_cortex_hud
+[wpn_sig_spear_tan_cortex]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_cortex_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -739,16 +688,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.52
 
-[wpn_sig_spear_cortex_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_cortex_hud.ogf
+[wpn_sig_spear_tan_cortex_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_cortex_hud.ogf
         aim_hud_offset_pos               = -0.053545, -0.014376, -0.032508
         aim_hud_offset_pos_16x9          = -0.053545, -0.014376, -0.032508
         aim_hud_offset_rot               = -0.00093, 0.003019, -0.05
         aim_hud_offset_rot_16x9          = -0.00093, 0.003019, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_echo1]:wpn_sig_spear
-hud				= wpn_sig_spear_echo1_hud
+[wpn_sig_spear_tan_echo1]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_echo1_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -766,16 +715,16 @@ zoom_step_count			= 1
 
 inv_weight              = 4.45
 
-[wpn_sig_spear_echo1_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_echo1_hud.ogf
+[wpn_sig_spear_tan_echo1_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_echo1_hud.ogf
         aim_hud_offset_pos               = -0.053889, -0.006483, -0.03
         aim_hud_offset_pos_16x9          = -0.053889, -0.006483, -0.03
         aim_hud_offset_rot               = 0.039179, 0.006232, -0.05
         aim_hud_offset_rot_16x9          = 0.039179, 0.006232, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_e0t2_magd]:wpn_sig_spear
-hud				= wpn_sig_spear_e0t2_magd_hud
+[wpn_sig_spear_tan_e0t2_magd]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_e0t2_magd_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -791,37 +740,16 @@ scope_zoom_factor       = 40
 
 inv_weight              = 4.50
 
-[wpn_sig_spear_e0t2_magd_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_e0t2_magd_hud.ogf
-        aim_hud_offset_pos               = -0.053806, -0.009314, -0.109542
-        aim_hud_offset_pos_16x9          = -0.053806, -0.009314, -0.109542
-        aim_hud_offset_rot               = -0.002565, 0.003764, -0.05
-        aim_hud_offset_rot_16x9          = -0.002565, 0.003764, -0.05
-
-[wpn_sig_spear_e0t2_magd_off]:wpn_sig_spear
-hud				= wpn_sig_spear_e0t2_magd_off_hud
-
-inv_grid_width     = 5
-inv_grid_height    = 2
-inv_grid_x         = 5
-inv_grid_y         = 2
-
-1icon_layer				= e0t2_magd_x
-1icon_layer_x			= 63
-1icon_layer_y			= -9
-
-inv_weight              = 4.50
-
-[wpn_sig_spear_e0t2_magd_off_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_e0t2_magd_off_hud.ogf
+[wpn_sig_spear_tan_e0t2_magd_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_e0t2_magd_hud.ogf
         aim_hud_offset_pos               = -0.053806, -0.009314, -0.109542
         aim_hud_offset_pos_16x9          = -0.053806, -0.009314, -0.109542
         aim_hud_offset_rot               = -0.002565, 0.003764, -0.05
         aim_hud_offset_rot_16x9          = -0.002565, 0.003764, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_gauss_sight]:wpn_sig_spear
-hud				= wpn_sig_spear_gauss_sight_hud
+[wpn_sig_spear_tan_gauss_sight]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_gauss_sight_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -838,16 +766,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.60
 
-[wpn_sig_spear_gauss_sight_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_gauss_hud.ogf
+[wpn_sig_spear_tan_gauss_sight_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_gauss_hud.ogf
         aim_hud_offset_pos               = -0.053534, -0.009121, -0.086747
         aim_hud_offset_pos_16x9          = -0.053534, -0.009121, -0.086747
         aim_hud_offset_rot               = -0.001162, 0.003622, -0.05
         aim_hud_offset_rot_16x9          = -0.001162, 0.003622, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_gee36]:wpn_sig_spear
-hud				= wpn_sig_spear_gee36_hud
+[wpn_sig_spear_tan_gee36]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_gee36_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -863,16 +791,16 @@ scope_zoom_factor       = 40
 
 inv_weight              = 4.55
 
-[wpn_sig_spear_gee36_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_gee36_hud.ogf
+[wpn_sig_spear_tan_gee36_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_gee36_hud.ogf
         aim_hud_offset_pos               = -0.053528, -0.01255, -0.115249
         aim_hud_offset_pos_16x9          = -0.053528, -0.01255, -0.115249
         aim_hud_offset_rot               = -0.001944, 0.003581, -0.05
         aim_hud_offset_rot_16x9          = -0.001944, 0.003581, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_leupold]:wpn_sig_spear
-hud				= wpn_sig_spear_leupold_hud
+[wpn_sig_spear_tan_leupold]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_leupold_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -889,16 +817,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.50
 
-[wpn_sig_spear_leupold_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_leupold_hud.ogf
+[wpn_sig_spear_tan_leupold_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_leupold_hud.ogf
         aim_hud_offset_pos               = -0.053615, -0.009278, -0.054563
         aim_hud_offset_pos_16x9          = -0.053615, -0.009278, -0.054563
         aim_hud_offset_rot               = -0.001549, 0.003265, -0.05
         aim_hud_offset_rot_16x9          = -0.001549, 0.003265, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_merk8_rmr]:wpn_sig_spear
-hud				= wpn_sig_spear_merk8_rmr_hud
+[wpn_sig_spear_tan_merk8_rmr]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_merk8_rmr_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -915,8 +843,8 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.52
 
-[wpn_sig_spear_merk8_rmr_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_merk8_rmr_hud.ogf
+[wpn_sig_spear_tan_merk8_rmr_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_merk8_rmr_hud.ogf
         aim_hud_offset_pos               = -0.053615, -0.009278, -0.054563
         aim_hud_offset_pos_16x9          = -0.053615, -0.009278, -0.054563
         aim_hud_offset_rot               = -0.001549, 0.003265, -0.05
@@ -928,8 +856,8 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_merk8
         aim_hud_offset_alt_rot_16x9      = -0.002078, 0.003566, 0.74
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_pn23]:wpn_sig_spear
-hud				= wpn_sig_spear_pn23_hud
+[wpn_sig_spear_tan_pn23]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_pn23_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -946,16 +874,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.55
 
-[wpn_sig_spear_pn23_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_pn23_hud.ogf
+[wpn_sig_spear_tan_pn23_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_pn23_hud.ogf
         aim_hud_offset_pos               = -0.053663, -0.009093, -0.120152
         aim_hud_offset_pos_16x9          = -0.053663, -0.009093, -0.120152
         aim_hud_offset_rot               = -0.001413, 0.003259, -0.05
         aim_hud_offset_rot_16x9          = -0.001413, 0.003259, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_ps320]:wpn_sig_spear
-hud				= wpn_sig_spear_ps320_hud
+[wpn_sig_spear_tan_ps320]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_ps320_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -973,16 +901,16 @@ zoom_step_count			= 1
 
 inv_weight              = 4.55
 
-[wpn_sig_spear_ps320_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_ps320_hud.ogf
+[wpn_sig_spear_tan_ps320_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_ps320_hud.ogf
         aim_hud_offset_pos               = -0.054066, -0.009039, -0.109714
         aim_hud_offset_pos_16x9          = -0.054066, -0.009039, -0.109714
         aim_hud_offset_rot               = -0.001112, 0.003233, -0.05
         aim_hud_offset_rot_16x9          = -0.001112, 0.003233, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_razorhd]:wpn_sig_spear
-hud				= wpn_sig_spear_razorhd_hud
+[wpn_sig_spear_tan_razorhd]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_razorhd_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -999,16 +927,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.55
 
-[wpn_sig_spear_razorhd_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_razorhd_hud.ogf
+[wpn_sig_spear_tan_razorhd_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_razorhd_hud.ogf
         aim_hud_offset_pos               = -0.053389, -0.010684, -0.038138
         aim_hud_offset_pos_16x9          = -0.053389, -0.010684, -0.038138
         aim_hud_offset_rot               = -0.001287, 0.002805, -0.05
         aim_hud_offset_rot_16x9          = -0.001287, 0.002805, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_specter]:wpn_sig_spear
-hud				= wpn_sig_spear_specter_hud
+[wpn_sig_spear_tan_specter]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_specter_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -1026,16 +954,16 @@ zoom_step_count			= 1
 
 inv_weight              = 4.45
 
-[wpn_sig_spear_specter_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_specter_hud.ogf
+[wpn_sig_spear_tan_specter_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_specter_hud.ogf
         aim_hud_offset_pos               = -0.053315, -0.012018, -0.107992
         aim_hud_offset_pos_16x9          = -0.053315, -0.012018, -0.107992
         aim_hud_offset_rot               = -0.001027, 0.003261, -0.05
         aim_hud_offset_rot_16x9          = -0.001027, 0.003261, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_spec_alt]:wpn_sig_spear
-hud				= wpn_sig_spear_spec_alt_hud
+[wpn_sig_spear_tan_spec_alt]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_spec_alt_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -1053,8 +981,8 @@ zoom_step_count			= 1
 
 inv_weight              = 4.50
 
-[wpn_sig_spear_spec_alt_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_spec_alt_hud.ogf
+[wpn_sig_spear_tan_spec_alt_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_spec_alt_hud.ogf
         aim_hud_offset_pos               = -0.053315, -0.012018, -0.107992
         aim_hud_offset_pos_16x9          = -0.053315, -0.012018, -0.107992
         aim_hud_offset_rot               = -0.001027, 0.003261, -0.05
@@ -1066,8 +994,8 @@ item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_spec_
         aim_hud_offset_alt_rot_16x9      = -0.002078, 0.003566, 0.74
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_tac30]:wpn_sig_spear
-hud				= wpn_sig_spear_tac30_hud
+[wpn_sig_spear_tan_tac30]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_tac30_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -1084,16 +1012,16 @@ scope_dynamic_zoom		= on
 
 inv_weight              = 4.40
 
-[wpn_sig_spear_tac30_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_tac30_hud.ogf
+[wpn_sig_spear_tan_tac30_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_tac30_hud.ogf
         aim_hud_offset_pos               = -0.053472, -0.011667, -0.055147
         aim_hud_offset_pos_16x9          = -0.053472, -0.011667, -0.055147
         aim_hud_offset_rot               = -0.001235, 0.003198, -0.05
         aim_hud_offset_rot_16x9          = -0.001235, 0.003198, -0.05
 		
 ;-------------------------------------------------------------------------------	
-[wpn_sig_spear_uh1_magd]:wpn_sig_spear
-hud				= wpn_sig_spear_uh1_magd_hud
+[wpn_sig_spear_tan_uh1_magd]:wpn_sig_spear_tan
+hud				= wpn_sig_spear_tan_uh1_magd_hud
 
 inv_grid_width     = 5
 inv_grid_height    = 2
@@ -1109,30 +1037,9 @@ scope_zoom_factor       = 20
 
 inv_weight              = 4.52
 
-[wpn_sig_spear_uh1_magd_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_uh1_magd_hud.ogf
+[wpn_sig_spear_tan_uh1_magd_hud]:wpn_sig_spear_tan_hud
+item_visual                	= dynamics\weapons\wpn_sig_spear_tan\wpn_sig_spear_tan_uh1_magd_hud.ogf
         aim_hud_offset_pos               = -0.053511, -0.011937, -0.094014
         aim_hud_offset_pos_16x9          = -0.053511, -0.011937, -0.094014
         aim_hud_offset_rot               = -0.001451, 0.003159, -0.05
         aim_hud_offset_rot_16x9          = -0.001451, 0.003159, -0.05
-	
-[wpn_sig_spear_uh1_magd_off]:wpn_sig_spear
-hud				= wpn_sig_spear_uh1_magd_off_hud
-
-inv_grid_width     = 5
-inv_grid_height    = 2
-inv_grid_x         = 5
-inv_grid_y         = 2
-
-1icon_layer				= uh1_magd_x
-1icon_layer_x			= 63
-1icon_layer_y			= -11
-
-inv_weight              = 4.52
-
-[wpn_sig_spear_uh1_magd_off_hud]:wpn_sig_spear_hud
-item_visual                	= dynamics\weapons\wpn_sig_spear\wpn_sig_spear_uh1_magd_off_hud.ogf
-        aim_hud_offset_pos               = -0.053511, -0.011937, -0.094014
-        aim_hud_offset_pos_16x9          = -0.053511, -0.011937, -0.094014
-        aim_hud_offset_rot               = -0.001451, 0.003159, -0.05
-        aim_hud_offset_rot_16x9          = -0.001451, 0.003159, -0.05	
